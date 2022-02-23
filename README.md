@@ -7,3 +7,5 @@
 ```shell
 wget -N https://raw.githubusercontents.com/Misaka-blog/Ngrok-1key/master/ngrok.sh && bash ngrok.sh
 ```
+
+快捷方式 `bash ngrok.sh`
