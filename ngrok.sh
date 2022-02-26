@@ -125,7 +125,7 @@ runTunnel(){
 	read -p "请输入你所使用的协议（默认HTTP）：" httptcp
 	[ -z $httptcp ] && httptcp="http"
 	read -p "请输入反代端口（默认80）：" tunnelPort
-    [ -z $tunnelPort ] && tunnelPort=80
+	[ -z $tunnelPort ] && tunnelPort=80
 	screen -USdm screen4ngrok ngrok $httptcp $tunnelPort -region $ngrok_region
 	yellow "等待5秒，获取Ngrok的外网地址"
 	sleep 5
