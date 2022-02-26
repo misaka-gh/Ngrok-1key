@@ -170,6 +170,7 @@ menu(){
 	green "3. 启用隧道"
 	green "4. 停用隧道"
 	green "5. 卸载Ngrok程序包"
+	green "6. 更新脚本"
 	green "0. 退出"
 	echo "         "
 	read -p "请输入数字:" NumberInput
@@ -179,6 +180,7 @@ menu(){
 		3) runTunnel ;;
 		4) killTunnel ;;
 		5) uninstall ;;
+		6) wget -N https://gitlab.com/misakano7545/Ngrok-1key/-/raw/master/ngrok.sh && bash ngrok.sh ;;
 		*) exit 1 ;;
 	esac
 }
