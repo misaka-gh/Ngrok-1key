@@ -19,3 +19,9 @@ wget -N https://raw.githubusercontents.com/Misaka-blog/Ngrok-1key/master/ngrok.s
 ## 参考资料
 
 Ngrok: https://ngrok.com/
+
+## 防和谐仓库
+
+GitHub: https://github.com/Misaka-blog/Ngrok-1key
+BitBucket: https://bitbucket.org/misakano7545/ngrok-1key/
+GitLab: https://gitlab.com/misakano7545/Ngrok-1key
