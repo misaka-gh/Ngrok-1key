@@ -141,6 +141,7 @@ uninstall(){
 
 menu(){
 	clear
+	checkStatus
 	red "=================================="
 	echo "                           "
 	red "      Ngrok 内网穿透一键脚本       "
