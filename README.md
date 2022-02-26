@@ -27,3 +27,7 @@ GitHub: https://github.com/Misaka-blog/Ngrok-1key
 BitBucket: https://bitbucket.org/misakano7545/ngrok-1key/
 
 GitLab: https://gitlab.com/misakano7545/Ngrok-1key
+
+## 交流群
+
+[Telegram 群组](https://t.me/misakanetcn)
