@@ -15,3 +15,7 @@ wget -N https://raw.githubusercontents.com/Misaka-blog/Ngrok-1key/master/ngrok.s
 ## 使用说明
 
 待更新
+
+## 参考资料
+
+Ngrok: https://ngrok.com/
