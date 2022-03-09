@@ -98,6 +98,7 @@ ngrok_authtoken(){
 }
 
 select_region(){
+	echo "下面是Ngrok官方服务器列表："
 	echo "1. 美国 (us)"
 	echo "2. 德国 (eu)"
 	echo "3. 新加坡 (ap)"
