@@ -52,7 +52,7 @@ archAffix(){
 checkStatus(){
 	[[ -z $(ngrok -help 2>/dev/null) ]] && ngrokStatus="未安装"
 	[[ -n $(ngrok -help 2>/dev/null) ]] && ngrokStatus="已安装"
-	[[ -f /root/.ngrok2/ngrok.yml ]] && authStatus="已授权"
+	[[ -f /root/.ngrok2/ngrok.yml ]] && authStatus="已授权" && ngrokAuth=$(cat /root/.ngrok2/ngrok.yml)
 	[[ ! -f /root/.ngrok2/ngrok.yml ]] && authStatus="未授权"
 }
 
@@ -165,6 +165,7 @@ menu(){
 	echo "            "
 	green "Ngrok 客户端状态：$ngrokStatus"
 	green "账户授权状态：$authStatus"
+        green "当前使用的Ngrok Authtoken：${ngrokAuth##*authtoken: }"
 	echo "            "
 	green "1. 下载Ngrok程序包"
 	green "2. 授权Ngrok账号"
