@@ -14,8 +14,7 @@ wget -N https://raw.githubusercontents.com/Misaka-blog/Ngrok-1key/master/ngrok.s
 
 ## 使用说明
 
-1. 在 https://ngrok.com/ 注册一个账号，获取Ngrok Authtoken
-2. 使用本脚本
+https://owo.misaka.rest/ngrok-script/
 
 ## 参考资料
 
