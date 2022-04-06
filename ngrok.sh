@@ -52,7 +52,7 @@ archAffix(){
 checkStatus(){
 	[[ -z $(ngrok -help 2>/dev/null) ]] && ngrokStatus="未安装"
 	[[ -n $(ngrok -help 2>/dev/null) ]] && ngrokStatus="已安装"
-	[[ -f /root/.ngrok2/ngrok.yml ]] && authStatus="已授权" && ngrokAuth=$(cat /root/.ngrok2/ngrok.yml)
+	[[ -f /root/.ngrok2/ngrok.yml ]] && authStatus="已授权"
 	[[ ! -f /root/.ngrok2/ngrok.yml ]] && authStatus="未授权"
 }
 
@@ -68,14 +68,24 @@ back2menu(){
 getNgrokAddress(){
 	if [ $httptcp == "tcp" ]; then
 		tcpNgrok=$(curl --silent --show-error http://127.0.0.1:4040/api/tunnels | sed -nE 's/.*public_url":"tcp:..([^"]*).*/\1/p')
-		green "隧道启动成功！当前TCP隧道地址为：$tcpNgrok"
+		if [[ -n $tcpNgrok ]]; then
+			green "隧道启动成功！当前TCP隧道地址为：$tcpNgrok"
+		else
+			screen -S screen4ngrok -X quit
+			screen -USdm screen4ngrok ngrok $httptcp $tunnelPort -region $ngrok_region
+		fi
 	fi
 	if [ $httptcp == "http" ]; then
 		httpNgrok=$(curl --silent --show-error http://127.0.0.1:4040/api/tunnels | sed -nE 's/.*public_url":"http:..([^"]*).*/\1/p')
 		httpsNgrok=$(curl --silent --show-error http://127.0.0.1:4040/api/tunnels | sed -nE 's/.*public_url":"https..([^"]*).*/\1/p')
-		green "隧道启动成功！"
-		yellow "当前隧道HTTP地址为：http://$httpNgrok"
-		yellow "当前隧道HTTPS地址为：https://$httpsNgrok"
+		if [[ -n $httpNgrok && -n $httpsNgrok ]]; then
+			green "隧道启动成功！"
+			yellow "当前隧道HTTP地址为：http://$httpNgrok"
+			yellow "当前隧道HTTPS地址为：https://$httpsNgrok"
+		else
+			screen -S screen4ngrok -X quit
+			screen -USdm screen4ngrok ngrok $httptcp $tunnelPort -region $ngrok_region
+		fi
 	fi
 }
 
@@ -90,7 +100,7 @@ download_ngrok(){
 ngrok_authtoken(){
 	[ $ngrokStatus == "未安装" ] && red "检测到未安装Ngrok程序包，无法执行操作！！" && back2menu
 	[ $authStatus == "已授权" ] && red "已授权Ngrok程序包，无需重复授权！！！" && back2menu
-	read -p "请输入Ngrok官方网站的Authtoken：" authtoken
+	read -p "请输入Ngrok官方网站的Authtoken（可从 https://dashboard.ngrok.com/get-started/your-authtoken 内获取）：" authtoken
 	[ -z $authtoken ] && red "无输入Authtoken，授权过程中断！" && back2menu
 	ngrok authtoken $authtoken
 	green "Ngrok Authtoken授权成功"
@@ -98,7 +108,6 @@ ngrok_authtoken(){
 }
 
 select_region(){
-	echo "下面是Ngrok官方服务器列表："
 	echo "1. 美国 (us)"
 	echo "2. 德国 (eu)"
 	echo "3. 新加坡 (ap)"
@@ -165,7 +174,6 @@ menu(){
 	echo "            "
 	green "Ngrok 客户端状态：$ngrokStatus"
 	green "账户授权状态：$authStatus"
-        green "当前使用的Ngrok Authtoken：${ngrokAuth##*authtoken: }"
 	echo "            "
 	green "1. 下载Ngrok程序包"
 	green "2. 授权Ngrok账号"
