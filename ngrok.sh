@@ -34,7 +34,7 @@ done
 [[ -z $(curl 2>/dev/null) ]] && ${PACKAGE_UPDATE[int]} && ${PACKAGE_INSTALL[int]} curl
 
 ## 统计脚本运行次数
-COUNT=$(curl -sm2 "https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fraw.githubusercontents.com%2FMisaka-blog%2FNgrok-1key%2Fmaster%2Fngrok.sh&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false" 2>&1) &&
+COUNT=$(curl -sm8 "https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fraw.githubusercontents.com%2FMisaka-blog%2FNgrok-1key%2Fmaster%2Fngrok.sh&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false" 2>&1) &&
 TODAY=$(expr "$COUNT" : '.*\s\([0-9]\{1,\}\)\s/.*')
 TOTAL=$(expr "$COUNT" : '.*/\s\([0-9]\{1,\}\)\s.*')
 
