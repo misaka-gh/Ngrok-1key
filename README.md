@@ -4,6 +4,8 @@
 
 > PS: 由于Ngrok免费版本的限制，本脚本只能转发HTTP和TCP协议
 
+如对脚本不放心，可使用此沙箱先测一遍再使用：https://killercoda.com/playgrounds/scenario/ubuntu
+
 ## 使用方法
 
 ```shell
