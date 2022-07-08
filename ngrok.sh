@@ -190,7 +190,7 @@ menu(){
 		3) runTunnel ;;
 		4) killTunnel ;;
 		5) uninstall ;;
-		6) wget -N https://gitlab.com/misakano7545/Ngrok-1key/-/raw/master/ngrok.sh && bash ngrok.sh ;;
+		6) wget -N https://raw.githubusercontent.com/misaka-gh/Ngrok-1key/master/ngrok.sh && bash ngrok.sh ;;
 		*) exit 1 ;;
 	esac
 }
